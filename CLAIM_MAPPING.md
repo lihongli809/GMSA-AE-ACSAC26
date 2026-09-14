@@ -24,7 +24,8 @@ verification type, never to full paper reproduction.
   Paper-number reproduction: UNVERIFIED.
 
 ## Claim 2 - Adaptive-MSA
-- Paper Figure/Table: Rebuttal Table 9
+- Paper/Response Mapping: Adaptive-MSA evaluation described in the Author Response;
+  intended to support the corresponding analysis in the camera-ready version.
 - Source Code: artifact/src/main_adaptive_msa.py; attacks/{poisoning,poisoning_adaptive_msa}.py;
   aggreagation_method/gm_raf.py; dp/noise_add.py
 - Canonical Result Files:
@@ -42,7 +43,9 @@ verification type, never to full paper reproduction.
     FeMnist: Gain 0.0751 / TPR 0.9617 / FPR 0.0192  (MATCH, tol 1e-4)
 
 ## Claim 3 - Hyperparameter Sensitivity
-- Paper Figure/Table: Rebuttal Table 8
+- Paper/Response Mapping: Hyperparameter sensitivity analysis described in the
+  Author Response; intended to support the corresponding analysis in the
+  camera-ready version.
 - Source Code: artifact/src/main_hyperparam_sensitivity.py;
   aggreagation_method/gm_raf_sensitivity.py
 - Canonical Result Files:

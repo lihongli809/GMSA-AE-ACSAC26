@@ -5,7 +5,11 @@ Claim 3 - Hyperparameter Sensitivity
    kappa, and MAD multiplier, plus the default center point.
 
 2. Paper mapping
-   Rebuttal Table 8 (Hyperparameter Sensitivity).
+   This claim corresponds to the hyperparameter sensitivity analysis conducted
+   during the review phase and described in the Author Response. The artifact
+   provides canonical results and claim-specific verification for this
+   extended evaluation. These results are intended to support the corresponding
+   analysis in the camera-ready version of the paper.
 
 3. Artifact files
    artifact/results/sensitivity/cifar_msa_sens_center_r0.2.csv

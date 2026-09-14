@@ -6,7 +6,11 @@ Claim 2 - Adaptive-MSA
    per-round Original_LSA, Best_LSA, LSA_Gain, TPR, and FPR.
 
 2. Paper mapping
-   Rebuttal Table 9 (Adaptive-MSA).
+   This claim corresponds to the Adaptive-MSA experiments conducted during the
+   review phase and described in the Author Response. The artifact provides
+   canonical results and claim-specific verification for this extended
+   evaluation. These results are intended to support the corresponding
+   analysis in the camera-ready version of the paper.
 
 3. Artifact files
    artifact/results/adaptive_msa/cifar_adaptive_msa_gmsa_r0.20_final.csv
