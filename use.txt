@@ -1,0 +1,25 @@
+GMSA AE - Usage Notes
+
+Intended use:
+  - academic research and ACSAC 2026 Artifact Evaluation only;
+  - reproduction / verification of the bundled canonical results;
+  - not a production deployment package.
+
+Quick start:
+  1. Read README.txt for scope, environment, and verification philosophy.
+  2. Install dependencies: ./install.sh (requires an NVIDIA GPU and the
+     PyTorch CUDA 11.7 wheel index; see install.sh).
+  3. Inspect a claim: claims/<claim_dir>/claim.txt
+  4. Verify a claim (read-only, no GPU needed):
+       claims/<claim_dir>/run.sh
+     run.sh invokes run.py, the canonical-result verifier.
+  5. Reproduce (optional; requires GPU and dataset preparation):
+       claims/<claim_dir>/run_repro.sh
+     run_repro.sh invokes run_repro.py against the frozen artifact/src/
+     snapshot and writes outputs under artifact/src/results/ (never into the
+     original research project).
+
+Verification scripts are claims/*/run.py (canonical-result verification),
+plus claims/_verify_common.py and claims/_ae_common.py (shared helpers).
+expected/ directories are intentionally empty at this stage; expected values
+must be populated only from verified outputs.

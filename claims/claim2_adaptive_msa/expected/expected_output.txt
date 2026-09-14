@@ -1,0 +1,24 @@
+Claim 2 - Adaptive-MSA: canonical-result statistical verification (expected)
+
+Statistical口径:
+  Final-5 Acc = arithmetic mean of the last 5 rounds' Acc.
+  TPR / FPR  = mean over attack-present rows (Original_LSA and LSA_Gain both valid).
+  LSA Gain   = mean of CSV LSA_Gain, cross-checked against mean(Best_LSA - Original_LSA).
+
+CIFAR (attack-present rows: 94/100):
+  Final-5 Acc = 68.018001317977905
+  LSA Gain actual 0.041313818467261634 | target 0.0413 | MATCH (tol 1e-4)
+  TPR      actual 1.0000000000000000   | target 1.0000 | MATCH
+  FPR      actual 0.011123775751435324 | target 0.0111 | MATCH
+  CSV LSA_Gain == recomputed (Best_LSA - Original_LSA): CONSISTENT
+
+FeMnist (attack-present rows: 47/50):
+  Final-5 Acc = 68.057553768157959
+  LSA Gain actual 0.075054433060779163 | target 0.0751 | MATCH
+  TPR      actual 0.96170212765957452  | target 0.9617 | MATCH
+  FPR      actual 0.019208037825059105 | target 0.0192 | MATCH
+  CSV LSA_Gain == recomputed (Best_LSA - Original_LSA): CONSISTENT
+
+Expected final line:
+Adaptive-MSA canonical-result statistical verification: PASS
+(exit code 0)

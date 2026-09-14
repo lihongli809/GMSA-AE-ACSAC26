@@ -1,0 +1,51 @@
+Claim 2 - Adaptive-MSA
+
+1. Claim description
+   Defense-aware adaptive MSA (20 candidates) against GMSA on CIFAR-10 and
+   FeMnist. The artifact bundles the final canonical CSV/NPY results reporting
+   per-round Original_LSA, Best_LSA, LSA_Gain, TPR, and FPR.
+
+2. Paper mapping
+   Rebuttal Table 9 (Adaptive-MSA).
+
+3. Artifact files
+   artifact/results/adaptive_msa/cifar_adaptive_msa_gmsa_r0.20_final.csv
+   artifact/results/adaptive_msa/cifar_adaptive_msa_gmsa_r0.20_final_scores.npy
+   artifact/results/adaptive_msa/cifar_adaptive_msa_gmsa_r0.20_final_adaptive_scores.npy
+   artifact/results/adaptive_msa/cifar_msa_gmsa_r0.20_final.csv   (baseline)
+   artifact/results/adaptive_msa/femnist_adaptive_msa_gmsa_r0.20_final.csv
+   artifact/results/adaptive_msa/femnist_adaptive_msa_gmsa_r0.20_final_scores.npy
+   artifact/results/adaptive_msa/femnist_adaptive_msa_gmsa_r0.20_final_adaptive_scores.npy
+   artifact/results/adaptive_msa/femnist_msa_gmsa_r0.20_final.csv (baseline)
+
+4. Verification procedure
+   Canonical-result statistical verification with the claim verifier
+   claims/claim2_adaptive_msa/run.py (Python standard library only). Statistical口径:
+     - Final-5 Acc: arithmetic mean of the last 5 rounds' Acc.
+     - TPR / FPR: mean over attack-present rows (Original_LSA and LSA_Gain both
+       valid numeric values).
+     - LSA Gain: mean of CSV LSA_Gain, cross-checked against independently
+       recomputed mean of (Best_LSA - Original_LSA).
+
+   Verified values (full precision):
+     CIFAR-10:
+       LSA Gain = 0.041313818467261634   (documented 4-decimal: 0.0413)
+       TPR      = 1.0000000000000000     (documented 4-decimal: 1.0000)
+       FPR      = 0.011123775751435324   (documented 4-decimal: 0.0111)
+     FeMnist:
+       LSA Gain = 0.075054433060779163   (documented 4-decimal: 0.0751)
+       TPR      = 0.96170212765957452    (documented 4-decimal: 0.9617)
+       FPR      = 0.019208037825059105   (documented 4-decimal: 0.0192)
+
+   All six values MATCH the documented rebuttal targets within an absolute
+   tolerance of 1e-4. CSV LSA_Gain mean equals the recomputed
+   (Best_LSA - Original_LSA) mean for both datasets (CONSISTENT).
+
+5. Current status
+   VERIFIED - canonical-result statistical consistency.
+
+6. Verification limitations
+   This is canonical-result statistical verification only. This does NOT
+   constitute full retraining or full reproduction of the original 100/50-round
+   experiments. The _pilot20 and _sanity files are not claim artifacts; only
+   the _final files are used.

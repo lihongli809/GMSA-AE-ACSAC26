@@ -1,0 +1,19 @@
+# GMSA AE - minimal runtime dependency set (stage 2, CODE-DERIVED)
+#
+# Derived by scanning the 18-file frozen closure under artifact/src/:
+# the three entries and their in-scope modules import ONLY:
+#   torch, torchvision, numpy, pandas  (plus Python stdlib)
+# wandb / matplotlib / scikit-learn / scipy / seaborn / hdbscan are NOT
+# imported by the closure; they belong to non-copied plot/tables scripts.
+
+# --- required by all three claims ---
+torch==1.13.1+cu117            # VERIFIED on server (Python 3.8.20); NOT plain PyPI
+torchvision==0.14.1+cu117      # VERIFIED on server; NOT plain PyPI
+numpy==1.23.0                  # upstream requirements.txt pin; Python 3.8 compatible
+pandas                         # imported by all 3 entries; NOT pinned upstream (server version unverified)
+
+# --- historical-only / NOT required by the 3-claim closure ---
+# matplotlib==3.10.0   upstream pin; requires Python >= 3.10 (conflicts with 3.8); plot scripts only
+# scikit_learn==1.6.0  upstream pin; requires Python >= 3.9 (conflicts with 3.8); tables scripts only
+# wandb==0.18.7        upstream pin; NOT imported by the closure; keep out of artifact (credential risk)
+# scipy, hdbscan       server extras for plotting / FLAME baseline; NOT imported by the closure

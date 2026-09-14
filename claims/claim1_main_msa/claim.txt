@@ -1,0 +1,41 @@
+Claim 1 - Main MSA Defense
+
+1. Claim description
+   GMSA (GM_RAF) vs FedAvg under Model Shuffle Attack (MSA) at malicious-client
+   rate 0.20 on CIFAR-10 and FeMnist. The artifact bundles the saved per-round
+   canonical results (Round, Acc, Loss, Rej, TPR, FPR) and, for GMSA, the LSA
+   score matrix NPY.
+
+2. Paper mapping (CODE-DERIVED)
+   - Fig. 4: FedAvg under MSA (femnist/cifar *_msa_fedavg_r0.20.csv)
+   - Fig. 5: GMSA defends MSA (femnist/cifar *_msa_def_r0.20.csv + _scores.npy)
+   - Table 4: only the r0.20 row is represented by the bundled files; the full
+     rate sweep is NOT part of this artifact.
+   - Table 3 (FLTrust/FLAME comparison) and Table 5 (ablation variants) are
+     NOT claimed here: their result files are not bundled in this artifact.
+
+3. Artifact files
+   artifact/results/main_msa/cifar_msa_def_r0.20.csv
+   artifact/results/main_msa/cifar_msa_def_r0.20_scores.npy
+   artifact/results/main_msa/cifar_msa_fedavg_r0.20.csv
+   artifact/results/main_msa/femnist_msa_def_r0.20.csv
+   artifact/results/main_msa/femnist_msa_def_r0.20_scores.npy
+   artifact/results/main_msa/femnist_msa_fedavg_r0.20.csv
+
+4. Verification procedure
+   Canonical Result Verification: read the bundled CSV/NPY and independently
+   recompute per-round statistics (round count, columns, Acc/TPR/FPR ranges,
+   score-matrix shape).
+   Verifier: claims/claim1_main_msa/run.sh (run.py, canonical-result
+   integrity check). Reproduction entry: claims/claim1_main_msa/run_repro.sh
+   (run_repro.py, frozen snapshot).
+
+5. Current status
+   VERIFIED - file presence, round counts (CIFAR 100, FeMnist 50), and CSV/NPY
+   structural integrity. Exact paper-table numerical reproduction has NOT been
+   independently recomputed at this stage.
+
+6. Verification limitations
+   This is canonical-result verification, not full retraining of the 100/50-
+   round experiments. Re-executing the source snapshot requires the validated
+   GPU environment described in README.txt.

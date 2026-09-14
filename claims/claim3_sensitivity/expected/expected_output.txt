@@ -1,0 +1,21 @@
+Claim 3 - Hyperparameter Sensitivity: file integrity check (expected)
+
+Each of the 7 sensitivity CSVs must be:
+  - present
+  - header + 20 contiguous communication rounds
+  - columns: Round,Acc,Loss,Rej,TPR,FPR
+  - no empty data cells, no NaN
+
+Expected files:
+PASS cifar_msa_sens_center_r0.2.csv
+PASS cifar_msa_sens_am0.1_r0.2.csv
+PASS cifar_msa_sens_am0.5_r0.2.csv
+PASS cifar_msa_sens_k1.0_r0.2.csv
+PASS cifar_msa_sens_k2.0_r0.2.csv
+PASS cifar_msa_sens_m2.0_r0.2.csv
+PASS cifar_msa_sens_m4.0_r0.2.csv
+
+Expected final lines:
+7/7 files PASS
+Sensitivity integrity check: PASS
+(exit code 0)

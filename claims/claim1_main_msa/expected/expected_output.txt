@@ -1,0 +1,12 @@
+Claim 1 - Main MSA Defense: canonical-result integrity verification (expected)
+
+PASS cifar_msa_def_r0.20.csv          ok (100 rounds)
+PASS cifar_msa_fedavg_r0.20.csv       ok (100 rounds)
+PASS cifar_msa_def_r0.20_scores.npy   exists
+PASS femnist_msa_def_r0.20.csv        ok (50 rounds)
+PASS femnist_msa_fedavg_r0.20.csv     ok (50 rounds)
+PASS femnist_msa_def_r0.20_scores.npy exists
+
+Expected final line:
+Claim 1 canonical-result integrity verification: PASS
+(exit code 0)

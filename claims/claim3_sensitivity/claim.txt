@@ -1,0 +1,35 @@
+Claim 3 - Hyperparameter Sensitivity
+
+1. Claim description
+   20-round CIFAR-10 sensitivity sweep of GMSA hyperparameters: alpha_mom,
+   kappa, and MAD multiplier, plus the default center point.
+
+2. Paper mapping
+   Rebuttal Table 8 (Hyperparameter Sensitivity).
+
+3. Artifact files
+   artifact/results/sensitivity/cifar_msa_sens_center_r0.2.csv
+   artifact/results/sensitivity/cifar_msa_sens_am0.1_r0.2.csv
+   artifact/results/sensitivity/cifar_msa_sens_am0.5_r0.2.csv
+   artifact/results/sensitivity/cifar_msa_sens_k1.0_r0.2.csv
+   artifact/results/sensitivity/cifar_msa_sens_k2.0_r0.2.csv
+   artifact/results/sensitivity/cifar_msa_sens_m2.0_r0.2.csv
+   artifact/results/sensitivity/cifar_msa_sens_m4.0_r0.2.csv
+
+4. Verification procedure
+   Canonical file integrity check via claims/claim3_sensitivity/run.py: each file must
+   contain a header + 20 contiguous communication rounds, with the columns
+   Round,Acc,Loss,Rej,TPR,FPR; no empty data rows; no NaN.
+
+5. Current status
+   VERIFIED - file integrity (7 files, header + 20 contiguous rounds each,
+   no empty rows, no NaN).
+
+   This is NOT "all Table 8 values independently reproduced". The exact
+   paper-number recomputation has not been performed at this stage.
+
+6. Verification limitations
+   Any Final-5 Acc observations are supplementary and are NOT the formal
+   independent numeric reproduction of Table 8. The Loss column contains
+   tensor(...) string values; this is a known presentation-layer issue and the
+   canonical files are left unmodified.
