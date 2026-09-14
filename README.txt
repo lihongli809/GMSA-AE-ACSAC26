@@ -94,10 +94,28 @@ original execution paths.
 6. FEMNIST Data
 ---------------
 The bundled artifact does not include the preprocessed FEMNIST dataset.
-Data preparation instructions are provided separately.
+The FEMNIST experiments use the LEAF FEMNIST benchmark.
 
-Data-access instructions remain to be finalized before public release. No
-server paths or unofficial download URLs are embedded in this artifact.
+For the original experiments, the LEAF preprocessing pipeline used
+non-IID sampling with a 5% sampling fraction, followed by sample-level
+train/test splitting. The corresponding preprocessing command was:
+
+  ./preprocess.sh -s niid --sf 0.05 -k 0 -t sample \
+    --smplseed 1776501746 \
+    --spltseed 1776501820
+
+The resulting data are expected at:
+
+  leaf/data/femnist/data/train/
+  leaf/data/femnist/data/test/
+
+relative to the project root.
+
+The preprocessing metadata and checksums are maintained with the original
+LEAF data on the reference system. The artifact does not redistribute the
+preprocessed FEMNIST dataset. Preparing the FEMNIST data is required only
+for optional end-to-end retraining; the claim verification scripts operate
+on the bundled canonical results.
 
 7. Table 10
 -----------
@@ -115,7 +133,7 @@ scope. Status: DO NOT CLAIM.
   CLAIM_MAPPING.md       claim -> paper/code/results/verification mapping
   artifact/src/          frozen three-claim source snapshot
   artifact/results/      canonical results (verbatim)
-  artifact/data/         reserved (FEMNIST strategy TBD)
+  artifact/data/         reserved for dataset-related notes/materials
   claims/                per-claim claim.txt / run.py / run.sh / run_repro.* / expected/
   infrastructure/        environment + metadata guidance
 
