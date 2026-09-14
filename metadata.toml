@@ -1,4 +1,24 @@
-# PLACEHOLDER - DO NOT SUBMIT AS-IS.
-# metadata.toml must be generated and/or validated with the official ACSAC
-# artifact metadata tool. Do not hand-invent the schema or fabricate fields.
-# TODO: run the official tool and replace this file before submission.
+badge = "f"
+artifact_url = "https://github.com/lihongli809/GMSA-AE-ACSAC26"
+cd = "c"
+citation = "@inproceedings{li2026gmsa,\n  title={GMSA: A Geometric Momentum and Subspace Analysis Framework against Model Shuffle Attacks in Differentially Private Federated Learning},\n  author={Li, Hongli and Sun, Bohan and Yin, Xuefei and Wang, Cong and Ralescu, Stephan and Zhang, Yanan},\n  year={2026}\n}"
+license_url = "https://opensource.org/license/mit/"
+infrastructure_constraints = "The artifact requires a Linux environment with an NVIDIA GPU and CUDA-enabled PyTorch for execution. We evaluated the artifact on a private GPU server with this specialized hardware/software configuration rather than on public research infrastructure."
+infrastructure_access = ""
+install_script = "https://github.com/lihongli809/GMSA-AE-ACSAC26/blob/main/install.sh"
+use = "The artifact is intended to reproduce and inspect the GMSA aggregation and detection workflow against Model Shuffle Attacks in differentially private federated learning. It is primarily intended for research and evaluation of the claims described in the accompanying artifact documentation. The bundled verification uses canonical experiment results for consistency checks rather than claiming full end-to-end retraining reproduction. The current implementation also requires a Linux environment with an NVIDIA GPU and CUDA-enabled PyTorch, and the artifact is not intended as a general-purpose federated learning framework or production deployment."
+destructive = "The artifact does not perform destructive actions. Its scripts may create or modify files within the designated working and output directories during execution, but they do not intentionally delete user data, modify system configuration, or perform other destructive operations."
+claim1 = "https://github.com/lihongli809/GMSA-AE-ACSAC26/blob/main/claims/claim1_main_msa/claim.txt"
+script1 = "https://github.com/lihongli809/GMSA-AE-ACSAC26/blob/main/claims/claim1_main_msa/run.sh"
+expected1 = "https://github.com/lihongli809/GMSA-AE-ACSAC26/blob/main/claims/claim1_main_msa/expected/expected_output.txt"
+claim2 = "https://github.com/lihongli809/GMSA-AE-ACSAC26/blob/main/claims/claim2_adaptive_msa/claim.txt"
+script2 = "https://github.com/lihongli809/GMSA-AE-ACSAC26/blob/main/claims/claim2_adaptive_msa/run.sh"
+expected2 = "https://github.com/lihongli809/GMSA-AE-ACSAC26/blob/main/claims/claim2_adaptive_msa/expected/expected_output.txt"
+claim3 = "https://github.com/lihongli809/GMSA-AE-ACSAC26/blob/main/claims/claim3_sensitivity/claim.txt"
+script3 = "https://github.com/lihongli809/GMSA-AE-ACSAC26/blob/main/claims/claim3_sensitivity/run.sh"
+expected3 = "https://github.com/lihongli809/GMSA-AE-ACSAC26/blob/main/claims/claim3_sensitivity/expected/expected_output.txt"
+hw = "Linux environment with an NVIDIA GPU and sufficient system memory is required. The validated reference environment uses 2 × NVIDIA RTX 3080 (10 GB each), an Intel Core i7-12700K CPU, and 64 GB RAM."
+sw = "Linux is required. The validated reference environment uses Python 3.8.20, PyTorch 1.13.1+cu117, and torchvision 0.14.1+cu117. CUDA-enabled PyTorch and an NVIDIA GPU are required by the current implementation. No paid software is required."
+api = "No API keys are required. The artifact does not depend on paid online services."
+gui = "n"
+readme = "https://github.com/lihongli809/GMSA-AE-ACSAC26/blob/main/README.txt"
