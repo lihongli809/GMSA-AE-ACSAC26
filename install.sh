@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# GMSA AE - install script (stage 2 draft)
+# GMSA AE - install script for optional reproduction
 #
 # Intended environment (verified on the authors' server):
 #   Linux, Python 3.8.20, NVIDIA GPU, CUDA 11.7-compatible driver,
@@ -14,7 +14,7 @@ set -euo pipefail
 
 PYTHON_BIN="${PYTHON_BIN:-python3}"
 
-echo "[GMSA-AE] install.sh (stage 2 draft)"
+echo "[GMSA-AE] install.sh for optional reproduction"
 "$PYTHON_BIN" --version
 
 # 1. PyTorch + torchvision from the PyTorch CUDA 11.7 wheel index

@@ -1,12 +1,17 @@
-Reserved for FEMNIST / dataset handling.
-
+Dataset Availability
+--------------------
 The preprocessed FEMNIST dataset is not bundled with this artifact.
-Data preparation/access instructions will be provided separately.
+Canonical-result verification (the minimal viable evaluation path) does
+not require the dataset.
 
-Access-instruction placeholder (TODO - authors must complete before public release):
-  [INSERT official LEAF FEMNIST download / preprocessing instructions here]
-No URL is provided in this draft; do not fabricate one.
+For the original FEMNIST experiment configuration, LEAF preprocessing
+commands, and expected data paths, see the FEMNIST Data section in the
+top-level README.txt.
 
-CIFAR-10 note: the frozen entry sets download=False and expects ./data/cifar/.
-The AE reproduction path must provide a data acquisition step without
-modifying the frozen source.
+End-to-end FEMNIST reproduction additionally requires obtaining and
+preprocessing the LEAF FEMNIST dataset locally. The artifact does not
+redistribute that dataset.
+
+CIFAR-10 data are also not bundled. The frozen reproduction entry uses
+download=False and expects the dataset under `./data/cifar/`. Optional
+CIFAR-10 reproduction therefore requires local dataset preparation.

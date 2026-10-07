@@ -1,39 +1,42 @@
-# GMSA AE - Official Compliance Audit (stage 7)
+# Release Audit Status (Current)
 
-This is a packaging-level compliance snapshot, not a badge claim.
+## 1. Frozen Code Closure
+- Snapshot present in `artifact/src/`.
+- The AE-side import-compatibility stub layer is limited to modules outside
+  the three artifact claim scopes.
+- Stubbed names fail explicitly if invoked; the layer does not fabricate
+  results or alter GMSA algorithm logic.
 
-## Required layout
-- README.txt          : present
-- license.txt         : present (MIT, same content as LICENSE)
-- use.txt             : present
-- artifact/           : present (src/ + results/ + data/)
-- infrastructure/     : present (README.txt + METADATA_GUIDE.md + RELEASE_AUDIT.md)
-- claims/             : present (3 claim folders)
+## 2. Canonical Results
+- Canonical result assets are present in `artifact/results/`.
+- Result files match the claim-specific verification paths.
+- The canonical-result verifiers have been executed successfully on the
+  authors' Linux reference environment.
 
-## Claims
-- claim1_main_msa     : claim.txt + run.sh + run.py + expected/expected_output.txt
-- claim2_adaptive_msa : claim.txt + run.sh + run.py + expected/expected_output.txt
-- claim3_sensitivity  : claim.txt + run.sh + run.py + expected/expected_output.txt
-- Each claim also has run_repro.py / run_repro.sh (optional reproduction entry).
+## 3. Claim Mapping
+- `CLAIM_MAPPING.md` defines the three artifact claims and their
+  claim-to-script/result mappings.
+- Table 10 / Early-stage MOM Ablation is explicitly out of scope.
 
-## Verifier smoke test (local, not clean Linux+CUDA)
-- bash -n install.sh and all run.sh/run_repro.sh: exit 0
-- claim1 run.sh: PASS (exit 0)
-- claim2 run.sh: PASS (exit 0), all six metrics MATCH at 1e-4
-- claim3 run.sh: PASS (exit 0), 7/7 files
+## 4. Metadata
+- `metadata.toml` is present and contains the current artifact metadata.
 
-## install.sh
-- Documents intended install for the verified server environment.
-- NOT yet validated on a clean Linux+CUDA host (explicit warning added).
+## 5. FEMNIST Data
+- Preprocessed FEMNIST data is not bundled.
+- The top-level `README.txt` documents the original LEAF preprocessing
+  configuration and expected data paths.
+- End-to-end FEMNIST reproduction therefore requires local dataset
+  preparation.
 
-## Public infrastructure
-- NOT FEASIBLE as-is: requires Python 3.8 + torch 1.13.1+cu117 + CUDA 11.7,
-  which conflicts with modern Colab runtimes (Python 3.10+, CUDA 12.x).
-  No public-infra adaptation layer is provided.
+## 6. Reproduction Environment
+- The validated reference environment uses Linux, Python 3.8.20,
+  PyTorch 1.13.1+cu117, torchvision 0.14.1+cu117, and NVIDIA GPUs.
+- `install.sh` documents the intended CUDA-enabled installation but has not
+  been validated on a clean Linux+CUDA host.
+- Canonical-result verification does not require the GPU environment.
 
-## FEMNIST
-- Preprocessed FEMNIST data is NOT bundled.
-- Placeholder for official access instructions present; no fabricated URL.
-
-## metadata.toml
-- PLACEHOLDER; must be generated with the official ACSAC artmeta tool.
+## 7. Public Infrastructure
+- The artifact is publicly available at:
+  https://github.com/lihongli809/GMSA-AE-ACSAC26
+- No public-cloud-specific adaptation layer is provided; optional reproduction
+  therefore depends on the documented local CUDA environment.

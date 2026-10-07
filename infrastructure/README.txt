@@ -16,4 +16,4 @@ strict minimum.
 
 PyTorch / torchvision 1.13.1+cu117 are NOT plain PyPI packages; they must be
 installed from the PyTorch CUDA 11.7 wheel index. See install.sh for the
-exact install command (stage-2 draft).
+exact installation command.

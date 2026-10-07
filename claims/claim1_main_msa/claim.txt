@@ -23,12 +23,15 @@ Claim 1 - Main MSA Defense
    artifact/results/main_msa/femnist_msa_fedavg_r0.20.csv
 
 4. Verification procedure
-   Canonical Result Verification: read the bundled CSV/NPY and independently
-   recompute per-round statistics (round count, columns, Acc/TPR/FPR ranges,
-   score-matrix shape).
-   Verifier: claims/claim1_main_msa/run.sh (run.py, canonical-result
-   integrity check). Reproduction entry: claims/claim1_main_msa/run_repro.sh
-   (run_repro.py, frozen snapshot).
+   The provided verifier script (run.py) checks the bundled canonical results
+   by:
+   - confirming the required CSV and NPY files are present;
+   - validating the CSV header against the expected columns;
+   - validating the recorded round counts (100 for CIFAR-10 and 50 for
+     FeMnist).
+
+   This is canonical-result integrity verification, not full experiment
+   reproduction.
 
 5. Current status
    VERIFIED - file presence, round counts (CIFAR 100, FeMnist 50), and CSV/NPY
