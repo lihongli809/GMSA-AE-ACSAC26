@@ -40,35 +40,68 @@ Functional badges. This statement describes preparation intent only; it does
 not mean a badge has already been granted, and this artifact does not claim
 Reproduced.
 
-3. Verification Philosophy
---------------------------
+3. Verification Philosophy, Expected Runtime & Success Criteria
+---------------------------------------------------------------
 Three distinct activities are separated:
 
-  - Canonical Result Verification: read the bundled canonical results and
-    independently recompute statistics from the saved CSV/NPY files.
-  - Scaled Reproduction: re-execute the code with a shortened configuration,
-    as engineering-level reproduction / smoke support only.
-  - Full Reproduction: re-run the complete original 100/50-round training
-    protocol.
+  - Canonical Result Verification (Minimal Viable Path): reads the bundled
+    canonical results and independently recomputes the documented integrity
+    or statistical checks from CSV/NPY files.
+    * GPU: Not required.
+    * Dataset preparation: Not required.
+    * Expected runtime: lightweight; in a reference validation run, the three
+      claim verifiers completed in 0.064s, 0.014s, and 0.020s respectively
+      (under 0.1 seconds total). Actual runtime depends on the execution environment.
+    * Success criteria: the verifier exits with code 0 and prints the final
+      PASS message. The reported checks satisfy the documented tolerances
+      and consistency criteria in the corresponding expected output.
 
-The current artifact primarily uses canonical-result verification.
-Canonical-result verification should not be interpreted as full retraining.
+  - Scaled Reproduction (Optional): re-executes the frozen research code with
+    a shortened configuration as engineering-level reproduction / smoke support.
+    * GPU: Required.
+    * Dataset preparation: Required.
+    * Expected runtime: hardware- and configuration-dependent; no formal
+      runtime benchmark was performed as part of this artifact package.
+    * Success criteria: the selected configuration completes without an
+      execution error and produces the documented output files.
 
-4. Environment
---------------
-An NVIDIA GPU is required by the current implementation: dp/noise_add.py
-calls .cuda() unconditionally in the DP noise path. Do not assume CPU-only
-execution.
+  - Full Reproduction (Optional): re-runs the complete original 100/50-round
+    training protocol.
+    * GPU: Required.
+    * Dataset preparation: Required.
+    * Expected runtime: not benchmarked as part of this artifact package;
+      substantially longer than canonical-result verification and dependent
+      on GPU hardware and dataset preparation.
 
-Validated reference environment (authors' server):
-  - Linux
-  - Python 3.8.20
-  - PyTorch 1.13.1+cu117
-  - torchvision 0.14.1+cu117
-  - 2 x NVIDIA RTX 3080 (10GB VRAM each)
+The current artifact primarily supports canonical-result verification for the
+Available and Functional badges. Full end-to-end retraining is not required
+for the current evaluation scope.
 
-"10GB is the strict minimum" is NOT claimed; 10GB VRAM is only the validated
-reference configuration.
+4. Environment & Resource Requirements
+--------------------------------------
+The artifact distinguishes the minimal canonical-result verification path
+from optional scaled/full reproduction.
+
+  - OS: Linux is the supported execution environment.
+  - GPU: Not required for canonical-result verification. An NVIDIA GPU with
+    CUDA-enabled PyTorch is required for optional scaled/full reproduction
+    because the frozen research code calls .cuda() unconditionally in the
+    DP noise path.
+  - CPU/RAM: No strict minimum has been established for canonical verification.
+    The validated reference environment used an Intel Core i7-12700K CPU and
+    64 GB RAM.
+  - Disk: No fixed minimum has been established for canonical verification.
+    Full FEMNIST reproduction requires substantial local storage; the
+    preprocessed FEMNIST dataset occupies approximately 20 GB on the
+    authors' reference system.
+  - Software: Python 3.8.20, PyTorch 1.13.1+cu117, and torchvision
+    0.14.1+cu117 were used in the validated reference environment.
+  - GUI: Not required.
+  - Network: The canonical-result verification path can run offline after
+    the repository is obtained. Network access is needed only when obtaining
+    the repository, installing dependencies, or preparing external datasets.
+  - APIs: No API keys or paid online services are required.
+  - License: MIT.
 
 5. Non-invasive Source Snapshot
 -------------------------------
@@ -143,3 +176,29 @@ LICENSE is the upstream MIT license (Copyright (c) 2023 Ming Yang), carried
 forward unchanged. The original MSA attack code is based on
 shaoxiongji/federated-learning and Yang et al. (2023, Information Sciences);
 see the upstream repository documentation for full attribution.
+
+10. Quick Start (Smallest Viable Evaluation Path)
+-------------------------------------------------
+From a Linux environment, the minimal canonical-result verification does not
+require an NVIDIA GPU, CUDA, or dataset preparation.
+
+1. Clone the repository
+git clone https://github.com/lihongli809/GMSA-AE-ACSAC26.git
+cd GMSA-AE-ACSAC26
+
+2. Run the three canonical-result verifiers
+bash claims/claim1_main_msa/run.sh
+bash claims/claim2_adaptive_msa/run.sh
+bash claims/claim3_sensitivity/run.sh
+
+Each verifier is read-only with respect to the bundled canonical results.
+A successful run exits with code 0 and prints a final PASS message. The
+corresponding expected output is provided in each claim's expected/
+directory.
+
+Optional scaled/full reproduction requires the CUDA-enabled environment
+described above:
+bash install.sh
+
+Dataset preparation is additionally required for end-to-end reproduction;
+see the FEMNIST Data section and the claim-specific reproduction entries.

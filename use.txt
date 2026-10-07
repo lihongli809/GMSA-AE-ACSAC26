@@ -21,5 +21,5 @@ Quick start:
 
 Verification scripts are claims/*/run.py (canonical-result verification),
 plus claims/_verify_common.py and claims/_ae_common.py (shared helpers).
-expected/ directories are intentionally empty at this stage; expected values
-must be populated only from verified outputs.
+Each expected/ directory contains the expected successful verifier output
+for that claim, corresponding to the bundled canonical results.
