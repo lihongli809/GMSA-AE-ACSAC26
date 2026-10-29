@@ -5,8 +5,12 @@
 #   torch, torchvision, numpy, pandas  (plus Python stdlib)
 # wandb / matplotlib / scikit-learn / scipy / seaborn / hdbscan are NOT
 # imported by the closure; they belong to non-copied plot/tables scripts.
+# Scope: these packages are for optional scaled/full reproduction of the frozen
+# artifact/src closure only. The three canonical-result verifiers (claims/*/run.py)
+# use only the Python standard library and do not require torch/torchvision/numpy/pandas.
 
-# --- required by all three claims ---
+# --- required only by optional scaled/full research-code reproduction ---
+# These dependencies are not required by the canonical-result verifiers (claims/*/run.py).
 torch==1.13.1+cu117            # VERIFIED on server (Python 3.8.20); NOT plain PyPI
 torchvision==0.14.1+cu117      # VERIFIED on server; NOT plain PyPI
 numpy==1.23.0                  # upstream requirements.txt pin; Python 3.8 compatible
